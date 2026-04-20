@@ -1,17 +1,18 @@
 # COMP S351F Software Project Management - WeChatBox
 
 ## Project Overview
-WeChatBox is an AI-powered WeChat chatbot (v3.28) that integrates with large language models to provide intelligent automated conversations. Built with Python and Flask, it supports multi-user/group chat with independent AI personas.
+WeChatBox is an AI-powered WeChat chatbot (v3.28) that integrates with large language models to provide intelligent automated conversations. Built with Python and Flask, it supports multi-user/group chat with independent AI personas, advanced memory management, and web UI configuration.
 
 ### Key Features
-- Multi-user/group chat support with independent AI personas (Prompt per user)
-- Image and emoji recognition with emotion-based emoji responses (9 emotion categories)
-- Long-term memory system with importance-based scoring and automatic summarization
-- Web search integration and URL content extraction
-- Scheduled reminders with optional voice call notifications
-- Flask-based Web UI for configuration management (no manual file editing needed)
-- Character roleplay forum
-- Auto-message system for proactive conversations
+- **Multi-user/group chat support** with independent AI personas (Prompt per user)
+- **Image and emoji recognition** with emotion-based emoji responses (9 emotion categories)
+- **Long-term memory system** with importance-based scoring and automatic summarization
+- **Web search integration** and URL content extraction
+- **Scheduled reminders** with optional voice call notifications
+- **Flask-based Web UI** for configuration management (no manual file editing needed)
+- **Character roleplay forum** for interactive conversations
+- **Auto-message system** for proactive conversations
+- **Complete thread management** (8 concurrent threads for scalability)
 
 ## Tech Stack
 | Component | Technology |
@@ -28,6 +29,15 @@ WeChatBox is an AI-powered WeChat chatbot (v3.28) that integrates with large lan
 - **Python:** 3.9 - 3.12 (installer provided: `installers/python-3.11.9-amd64.exe`)
 - **WeChat:** Version 4.1.2 (installer provided: `installers/微信4.1.2.exe`)
 - **API Key:** From any OpenAI-compatible LLM provider (e.g., DeepSeek, OpenAI, Google Gemini via proxy)
+
+## Demo Video
+📹 **A demo video has been included in this repository:** `demo_video.mp4`
+
+Watch the demo video to see the bot in action, including:
+- Multi-user conversation handling
+- Emoji response generation based on emotion detection
+- Web UI configuration interface
+- Automated message processing and responses
 
 ## Setup Instructions
 
@@ -76,40 +86,41 @@ WeChatBox is an AI-powered WeChat chatbot (v3.28) that integrates with large lan
 ## Directory Structure
 ```
 COMP_S351F_Software_Project_Management_WechatBox/
-├── README_SUBMISSION.md              -- This file
-├── installers/                       -- Runtime installers
-│   ├── python-3.11.9-amd64.exe      -- Python interpreter (26 MB)
-│   └── 微信4.1.2.exe                -- WeChat Desktop (212 MB)
-└── WeChatBot_WXAUTO_SE-3.28/        -- Main application
-    ├── bot.py                        -- Core bot logic (4390 lines, message handling, AI calls, memory)
-    ├── config.py                     -- All configuration settings (API keys removed for security)
-    ├── config_editor.py              -- Flask Web UI for config editing and bot control
-    ├── updater.py                    -- Auto-update mechanism (checks GitHub/Gitee)
-    ├── Run.bat                       -- Startup script (dependency install + launch)
-    ├── uninstall_all_packages.bat    -- Utility to clean pip packages
-    ├── requirements.txt              -- Python dependency list
-    ├── version.json                  -- Version metadata
-    ├── chat_contexts.json            -- Runtime chat history (starts empty)
-    ├── recurring_reminders.json      -- Scheduled reminders data
-    ├── readme.md                     -- Original project documentation (Chinese)
-    ├── CHANGELOG.md                  -- Version change history
-    ├── LICENSE                       -- GNU GPL-3.0 license
-    ├── LICENSE_COMPLIANCE.md         -- License compliance details
-    ├── DEPENDENCIES.txt              -- Third-party dependency licenses
-    ├── templates/                    -- Flask HTML templates
-    │   ├── config_editor.html        -- Main configuration UI
-    │   ├── character_forum.html      -- Character forum page
-    │   ├── login.html                -- Login page
-    │   └── quick_start.html          -- Quick start guide
-    ├── prompts/                      -- AI system prompts (character definitions)
-    │   ├── 371_agent.md              -- Custom agent prompt
-    │   └── Chat_Agent.md             -- Default educational assistant prompt
-    ├── emojis/                       -- Emotion-based emoji packs (9 categories, 27 GIFs)
-    ├── libs/                         -- Pre-packaged Python wheel dependencies (46 packages)
-    ├── Demo_Image/                   -- Application screenshots
-    ├── CoreMemory/                   -- Long-term AI memory storage (generated at runtime)
-    ├── Memory_Temp/                  -- Temporary chat logs (generated at runtime)
-    └── forum_data/                   -- Character forum data (generated at runtime)
+├── README.md                          -- Main project documentation
+├── demo_video.mp4                     -- Demo video showing bot functionality
+├── installers/                        -- Runtime installers
+│   ├── python-3.11.9-amd64.exe       -- Python interpreter (26 MB)
+│   └── 微信4.1.2.exe                 -- WeChat Desktop (212 MB)
+└── WeChatBot_WXAUTO_SE-3.28/         -- Main application
+    ├── bot.py                         -- Core bot logic (4390 lines, message handling, AI calls, memory)
+    ├── config.py                      -- All configuration settings (API keys removed for security)
+    ├── config_editor.py               -- Flask Web UI for config editing and bot control
+    ├── updater.py                     -- Auto-update mechanism (checks GitHub/Gitee)
+    ├── Run.bat                        -- Startup script (dependency install + launch)
+    ├── uninstall_all_packages.bat     -- Utility to clean pip packages
+    ├── requirements.txt               -- Python dependency list
+    ├── version.json                   -- Version metadata
+    ├── chat_contexts.json             -- Runtime chat history (starts empty)
+    ├── recurring_reminders.json       -- Scheduled reminders data
+    ├── readme.md                      -- Original project documentation (Chinese)
+    ├── CHANGELOG.md                   -- Version change history
+    ├── LICENSE                        -- GNU GPL-3.0 license
+    ├── LICENSE_COMPLIANCE.md          -- License compliance details
+    ├── DEPENDENCIES.txt               -- Third-party dependency licenses
+    ├── templates/                     -- Flask HTML templates
+    │   ├── config_editor.html         -- Main configuration UI
+    │   ├── character_forum.html       -- Character forum page
+    │   ├── login.html                 -- Login page
+    │   └── quick_start.html           -- Quick start guide
+    ├── prompts/                       -- AI system prompts (character definitions)
+    │   ├── 371_agent.md               -- Custom agent prompt
+    │   └── Chat_Agent.md              -- Default educational assistant prompt
+    ├── emojis/                        -- Emotion-based emoji packs (9 categories, 27 GIFs)
+    ├── libs/                          -- Pre-packaged Python wheel dependencies (46 packages)
+    ├── Demo_Image/                    -- Application screenshots
+    ├── CoreMemory/                    -- Long-term AI memory storage (generated at runtime)
+    ├── Memory_Temp/                   -- Temporary chat logs (generated at runtime)
+    └── forum_data/                    -- Character forum data (generated at runtime)
 ```
 
 ## Architecture Overview
@@ -146,3 +157,10 @@ User (WeChat) <---> wxautox4_wechatbot <---> bot.py (Message Handler)
 
 ## Security Note
 All API keys have been removed from `config.py` and replaced with `YOUR_API_KEY_HERE` placeholders. You must insert valid API keys before running the bot.
+
+## Project Statistics
+- **Language Composition:** Python (55.1%), HTML (43.9%), Batch scripting (1%)
+- **Main Application:** 4390+ lines of core logic
+- **Threading:** 8 concurrent threads for optimal performance
+- **Emoji Support:** 27 GIFs across 9 emotion categories
+- **Dependencies:** 46 pre-packaged Python wheels included
